@@ -17,6 +17,11 @@ class GameView:
        self.buttons = []
        self.selectedPiece = None
        self.statusbar = StatusBar()
+       self.promotionbar = StatusBar()
+       self.statusbar.addButton(TextButton(670, 10, "Draw"), "draw")
+       self.statusbar.addButton(TextButton(500, 10, "Forfeit"), "forfeit")
+
+       self.drawBoard()
        for piece in pieces:
            self.buttons.append(PieceButton(piece))
        for y in range(TILE_LENGTH):
@@ -77,25 +82,42 @@ class PieceButton:
        self.rect.y = self.piece.y * TILE_SIZE
 
 class StatusBar(pygame.Surface):
-   def __init__(self):
+    def __init__(self):
        self.width = TILE_LENGTH*TILE_SIZE
        self.height = BAR_HEIGHT
        super().__init__((self.width, self.height))
-       self.buttons = (Button(500, 10, None, "Draw"))
+       self.buttons = {}
+       self.components = {}
 
-   def draw(self, surface):
-       surface.blit(self, 0, TILE_SIZE*TILE_LENGTH)
-       for button in self.buttons:
+    def draw(self, surface):
+       surface.blit(self, (0, TILE_SIZE*TILE_LENGTH))
+       for key, button in self.buttons.items():
+           print(button)
            button.draw(self)
 
+    def addButton(self, newButton, name):
+        self.buttons[name] = newButton
+
+    def addComponent(self, newComponent, name):
+        self.components[name] = newComponent
+
 class Button(pygame.Rect):
-   def __init__(self, x, y, onclick, text):
-       self.onclick = onclick
-       self.text = font.render(text, False, (0,0,0))
-       super().__init__(x, y, 140, BAR_HEIGHT - 20)
+   def __init__(self, x, y, component):
+       self.onclick = None
+       self.component = component
+       #self.name = self.component
+       super().__init__(x, y, self.component.get_width(), self.component.get_height() + 10)
 
 
    def draw(self, surface):
-       pygame.draw.rect.draw(surface, (60, 90, 190), self)
-       surface.blit(self.text, self.x, self.y)
+       pygame.draw.rect(surface, (60, 90, 190), self)
+       surface.blit(self.component, (self.x, self.y))
 
+class ImageButton(Button):
+    def __init__(self, x, y, image):
+        super().__init__(x, y, image)
+
+class TextButton(Button):
+    def __init__(self, x, y, text):
+        text = font.render(text, False, (0,0,0))
+        super().__init__(x, y, text)
