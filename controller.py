@@ -15,8 +15,12 @@ class GameController:
         y = mouseY // constants.TILE_SIZE
         move = self.VIEW.selectedPiece.piece.canMove(x, y, self.board)
         if move != MoveType.INVALID:
+            if move == MoveType.PROMOTION:
+                self.VIEW.flipBars()
             self.board.movePiece(x, y, self.VIEW.selectedPiece.piece, move)
             self.VIEW.selectedPiece = None
+
+
         else:
             self.VIEW.abortMove()
 
@@ -27,6 +31,7 @@ class GameController:
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             self.VIEW.selectPiece(event)
+            self.VIEW.currentbar.tryButtons(event)
         elif event.type == pygame.MOUSEBUTTONUP and self.VIEW.selectedPiece:
             self.tryMove(event)
         elif event.type == pygame.MOUSEMOTION:

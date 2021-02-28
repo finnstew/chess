@@ -68,13 +68,14 @@ class GameBoard:
             if abs(piece.x - x) == 4:
                 self.transfer(x + 2, y, self.getPiece(x, y))
                 self.transfer(x + 1, y, piece)
-                print(x, y)
-                print("Hello World!")
             elif abs(piece.x - x) == 3:
                 self.transfer(x - 2, y, self.getPiece(x, y))
                 self.transfer(piece.x + 2, y, piece)
-                print(x, y)
-                print("Hello World!")
+        if moveType == moveType.PROMOTION:
+            if self.hasEnemyPiece(x,y, piece):
+                self.capture(x,y)
+            self.transfer(x, y, piece)
+
 
         if self.removeEnpassant:
             self.enpassantPiece = None
@@ -122,11 +123,6 @@ class GameBoard:
             return self.board[y][x]
         else:
             return None
-
-
-
-
-
 
 
 class Piece:
@@ -189,14 +185,21 @@ class Pawn(Piece):
         return "Pawn" + " " + str(self.x) + " " + str(self.y) + " " + str(self.team)
     def canMove(self, x, y, board):
         if y == self.y + self.direction and x == self.x and not board.hasPiece(x,y):
-            return MoveType.NORMAL
+            if y == 0 or y == 7:
+                return MoveType.PROMOTION
+            else:
+                return MoveType.NORMAL
+
         elif y == self.y + 2 and x == self.x and self.direction == 1 and self.y == 1:
             return MoveType.PREENPASSANT
         elif y == self.y - 2 and x == self.x and self.direction == -1 and self.y == 6:
             return MoveType.PREENPASSANT
         elif y == self.y + self.direction and 1 == abs(self.x - x):
             if board.hasEnemyPiece(x,y,self):
-                return MoveType.CAPTURE
+                if y == 0 or y == 7:
+                    return MoveType.PROMOTION
+                else:
+                    return MoveType.CAPTURE
             elif board.hasPiece(x, y - self.direction) and board.getPiece(x, y - self.direction) == board.enpassantPiece:
                 return MoveType.ENPASSANT
             else:

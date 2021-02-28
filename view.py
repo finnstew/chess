@@ -1,5 +1,6 @@
 import pygame
 from constants import TILE_SIZE, WHITE, BLACK, TILE_LENGTH, BAR_HEIGHT, font
+import constants
 class Tile:
    def __init__(self, color, x, y):
        self.color = BLACK if color else WHITE
@@ -16,10 +17,8 @@ class GameView:
        self.screen = SCREEN
        self.buttons = []
        self.selectedPiece = None
-       self.statusbar = StatusBar()
-       self.promotionbar = StatusBar()
-       self.statusbar.addButton(TextButton(670, 10, "Draw"), "draw")
-       self.statusbar.addButton(TextButton(500, 10, "Forfeit"), "forfeit")
+
+       self.createBars()
 
        self.drawBoard()
        for piece in pieces:
@@ -50,9 +49,26 @@ class GameView:
            item.draw(self.screen)
        for item in (self.buttons):
            item.draw(self.screen)
-       self.statusbar.draw(self.screen)
+       self.currentbar.draw(self.screen)
        pygame.display.update()
 
+   def createBars(self):
+       self.statusbar = StatusBar()
+       self.promotionbar = StatusBar()
+       self.currentbar = self.statusbar
+       self.statusbar.addButton(TextButton(670, 10, "Draw"), "draw")
+       self.statusbar.addButton(TextButton(500, 10, "Forfeit"), "forfeit")
+       self.promotionbar.addButton(ImageButton(580, 5, constants.BLACK_PAWN), "pawn")
+       self.promotionbar.addButton(ImageButton(460, 5, constants.BLACK_KNIGHT), "knight")
+       self.promotionbar.addButton(ImageButton(340, 5, constants.BLACK_QUEEN), "queen")
+       self.promotionbar.addButton(ImageButton(220, 5, constants.BLACK_ROOK), "rook")
+       self.promotionbar.addButton(ImageButton(100, 5, constants.BLACK_BISHOP), "bishop")
+
+   def flipBars(self):
+       if self.currentbar == self.statusbar:
+           self.currentbar = self.promotionbar
+       else:
+           self.currentbar = self.statusbar
 
    def abortMove(self):
        self.selectedPiece.rect.x = self.selectedPiece.piece.x * 100
@@ -101,9 +117,16 @@ class StatusBar(pygame.Surface):
     def addComponent(self, newComponent, name):
         self.components[name] = newComponent
 
+    def tryButtons(self, event):
+        x,y = event.pos
+        print(x,y)
+        for key, button in self.buttons.items():
+            if button.collidepoint(x,y-800):
+                print(event.pos)
+
 class Button(pygame.Rect):
    def __init__(self, x, y, component):
-       self.onclick = None
+       self.onclick = lambda: print("CLICK!")
        self.component = component
        #self.name = self.component
        super().__init__(x, y, self.component.get_width(), self.component.get_height() + 10)

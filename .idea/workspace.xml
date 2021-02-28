@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ca1111b-8bfb-4630-9d05-a1fc95faca7d" name="Default Changelist" comment="initial commit">
+    <list default="true" id="8ca1111b-8bfb-4630-9d05-a1fc95faca7d" name="Default Changelist" comment="draw other buttons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/view.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,12 +81,20 @@
       <option name="project" value="LOCAL" />
       <updated>1613941623114</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="draw other buttons">
+      <created>1613944795578</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1613944795578</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="draw other buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="draw other buttons" />
   </component>
   <component name="WindowStateProjectService">
     <state x="564" y="459" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607901348933">
@@ -96,34 +106,34 @@
     </state>
     <state x="659" y="322" key="FileChooserDialogImpl/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1613943701553" />
     <state x="879" y="434" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1607900512575" />
-    <state width="1400" height="214" key="GridCell.Tab.0.bottom" timestamp="1613944598489">
+    <state width="1400" height="214" key="GridCell.Tab.0.bottom" timestamp="1614549425688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1400" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1613944598489" />
+    <state width="1400" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1614549425688" />
     <state width="1362" height="241" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1607901406558" />
-    <state width="1400" height="214" key="GridCell.Tab.0.center" timestamp="1613944598489">
+    <state width="1400" height="214" key="GridCell.Tab.0.center" timestamp="1614549425688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1400" height="214" key="GridCell.Tab.0.center/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1613944598489" />
+    <state width="1400" height="214" key="GridCell.Tab.0.center/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1614549425688" />
     <state width="1362" height="241" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1607901406558" />
-    <state width="1400" height="214" key="GridCell.Tab.0.left" timestamp="1613944598489">
+    <state width="1400" height="214" key="GridCell.Tab.0.left" timestamp="1614549425688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1400" height="214" key="GridCell.Tab.0.left/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1613944598489" />
+    <state width="1400" height="214" key="GridCell.Tab.0.left/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1614549425688" />
     <state width="1362" height="241" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1607901406558" />
-    <state width="1400" height="214" key="GridCell.Tab.0.right" timestamp="1613944598489">
+    <state width="1400" height="214" key="GridCell.Tab.0.right" timestamp="1614549425688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1400" height="214" key="GridCell.Tab.0.right/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1613944598489" />
+    <state width="1400" height="214" key="GridCell.Tab.0.right/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1614549425688" />
     <state width="1362" height="241" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1607901406558" />
     <state x="357" y="210" key="SettingsEditor" timestamp="1609794211297">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="357" y="210" key="SettingsEditor/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1609794211297" />
-    <state x="309" y="183" key="Vcs.Push.Dialog.v2" timestamp="1613941676767">
+    <state x="309" y="183" key="Vcs.Push.Dialog.v2" timestamp="1613944799188">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="309" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1613941676767" />
+    <state x="309" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-2560.0.2560.1040@0.0.1920.1040" timestamp="1613944799188" />
     <state x="480" y="147" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1611523999129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
